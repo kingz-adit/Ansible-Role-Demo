@@ -1,0 +1,17 @@
+---
+- name: Running playbook
+  hosts: pod-aditechadb-managed1
+  become: true
+
+  pre_tasks:
+    - name: first tasks
+      debug:
+        msg: "Server is ready!"
+
+  roles:
+    - demo_ansible
+
+  post_tasks:
+    - name: done
+      debug:
+        msg: "DONE, good job!" 

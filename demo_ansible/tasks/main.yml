@@ -1,0 +1,19 @@
+---
+# tasks file for demo_ansible
+- name: install apache2
+  apt:
+    name: apache2
+    state: present
+
+- name: start & enable
+  service:
+    name: apache2
+    state: started
+    enabled: true
+
+- name: copy index.html
+  copy:
+    src: html/
+    dest: "/var/www/html/"
+  notify:
+    - restart apache2
